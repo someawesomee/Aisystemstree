@@ -1,6 +1,8 @@
 from decision import Decision
 
-class DecisionQuery(Decision):
+
+
+class DecisionQuery:
     def __init__(self, title, test, positive, negative):
         self.title = title
         self.test = test
@@ -8,10 +10,7 @@ class DecisionQuery(Decision):
         self.negative = negative
 
     def evaluate(self, client):
-        result = self.test(client)
-        result_as_string = "yes" if result else "no"
-
-        if result:
+        if self.test(client):
             self.positive.evaluate(client)
         else:
             self.negative.evaluate(client)
