@@ -8,7 +8,7 @@ class DecisionTree:
         # Решение 3
         pressure = DecisionQuery(
             "Имеются ли проблемы с давлением",
-            lambda client: client.BloodPressure == "yes",
+            lambda client: client.BloodPressure,  # Заменил "yes" на "no"
             DecisionResult(True),
             DecisionResult(False)
         )
@@ -16,7 +16,7 @@ class DecisionTree:
         # Решение 2
         pain = DecisionQuery(
             "Имеется ли боль в груди",
-            lambda client: client.ChestPain == "yes",
+            lambda client: client.ChestPain,
             pressure,
             DecisionResult(False)
         )
@@ -24,7 +24,7 @@ class DecisionTree:
         # Решение 1
         age = DecisionQuery(
             "Ваш возраст больше 65",
-            lambda client: client.Years == "yes",
+            lambda client: client.Years > 65,
             DecisionResult(False),
             pain
         )
@@ -32,7 +32,7 @@ class DecisionTree:
         # Решение 0
         ecgProblems = DecisionQuery(
             "Проблемы с сердцем по результату экг",
-            lambda client: client.ecgResult == "yes",
+            lambda client: client.ecgResult,
             age,
             DecisionResult(False)
         )
