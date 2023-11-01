@@ -1,30 +1,27 @@
-from decision import DecisionQuery, DecisionResult
-class HeartAttackTree:
-    def __init__(self):
-        self.pass_exam = DecisionQuery(
-            "PassExam",
-            DecisionResult("Exam"),
-            DecisionResult("Automatic 3"),
-            self.get_pass_exam
-        )
+from DecisionQuery import DecisionQuery
 
-        self.activities = DecisionQuery(
-            "Activities",
-            DecisionResult("Automatic 5"),
-            self.pass_exam,
-            self.get_activities
-        )
+def tree():
+    def ecg():
+        ecg = DecisionQuery()
+        ecg.title = "Heart Attack Risk"
+        ecg.test = lambda client: client.ecg
+        ecg.positive = DecisionResult()
+        ecg.positive.result = True
+        ecg.negative = DecisionResult()
+        ecg.negative.result  = age
 
-        self.theories = DecisionQuery(
-            "Theories",
-            self.activities,
-            DecisionResult("Exam"),
-            self.get_theories
-        )
+    def age():
+        age  = DecisionQuery()
+        age.title = "Age >= 65"
+        age.test = lambda client: client.age >= 65
+        age.positive = ChestPain()
+        age.negative = DecisionResult()
+        age.negative.result = False
+    def ChestPain():
+        ChestPain = DecisionQuery()
+        ChestPain.title = "Chest Pain True?"
+        ChestPain.test = lambda client: client.ChestPain = 1
+        ChestPain.positive = 
 
-        self.practice = DecisionQuery(
-            "Practice",
-            self.theories,
-            DecisionResult("Repeat"),
-            self.get_practice
-        )
+    def PressureProblems():
+        pass

@@ -81,7 +81,7 @@ def data():
     heart_pain = int(heart_pain_tf.get())
     pressure = int(pressure_tf.get())
 
-    # Создаем дерево решений
+    #Создаем дерево решений
     decision_tree = DecisionQuery()
 
     # Добавляем узлы дерева
@@ -103,6 +103,11 @@ def data():
         print("Вы не прошли")
 
 
+
+class DecisionResult():
+    pass
+
+
 # # Вызываем функцию при нажатии кнопки
 # button = Button(
 #     frame,
@@ -120,4 +125,4 @@ cal_btn.grid(row=6, column=2)
 
 
 
-# window.mainloop()
+window.mainloop()
