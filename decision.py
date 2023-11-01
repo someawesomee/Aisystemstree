@@ -1,17 +1,48 @@
-from decision import Decision
+from abc import ABC, abstractmethod
+class Client:
+    def __init__(self):
+        self.ecgResult = False
+        self.Years = 0
+        self.ChestPain = False
+        self.BloodPressure = False
 
-class DecisionQuery(Decision):
-    def __init__(self, title, test, positive, negative):
-        self.title = title
-        self.test = test
-        self.positive = positive
-        self.negative = negative
+    @property
+    def ecgResult(self):
+        return self._ecgResult
 
+    @ecgResult.setter
+    def ecgResult(self, value):
+        self._ecgResult = value
+    
+    @property
+    def Years(self):
+        return self._Years
+
+    @Years.setter
+    def Years(self, value):
+        self._Years = value
+    
+    @property
+    def ChestPain(self):
+        return self._ChestPain
+
+    @ChestPain.setter
+    def ChestPain(self, value):
+        self._ChestPain = value
+
+    @property
+    def BloodPressure(self):
+        return self._BloodPressure
+
+    @BloodPressure.setter
+    def BloodPressure(self, value):
+        self._BloodPressure = value
+
+        
+
+   
+
+class Decision(ABC):
+    @abstractmethod
     def evaluate(self, client):
-        result = self.test(client)
-        result_as_string = "yes" if result else "no"
-
-        if result:
-            self.positive.evaluate(client)
-        else:
-            self.negative.evaluate(client)
+        pass
